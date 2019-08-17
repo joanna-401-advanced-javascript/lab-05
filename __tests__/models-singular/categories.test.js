@@ -1,7 +1,6 @@
 'use strict';
 
 const Categories = require('../../models-singular/categories');
-const categories = new Categories();
 
 const supergoose = require('../supergoose.js');
 
@@ -10,6 +9,7 @@ describe('Categories Model (Singular)', () => {
   // How will you handle both the happy path and edge cases in these tests?
 
   it('can create() a new category', () => {
+    const categories = new Categories();
     const testCategory = {
       name: 'Food',
       description: 'Delicious'
@@ -24,6 +24,7 @@ describe('Categories Model (Singular)', () => {
   });
 
   it('can get() a category', () => {
+    const categories = new Categories();
     const testCategory = {
       name: 'banana',
       description: 'yellow'
@@ -40,6 +41,7 @@ describe('Categories Model (Singular)', () => {
   });
 
   it('can get() all categories', () => {
+    const categories = new Categories();
     const testCategory = {
       name: 'berries',
       description: 'sweet'
@@ -57,10 +59,39 @@ describe('Categories Model (Singular)', () => {
   });
 
   it('can update() a category', () => {
+    const categories = new Categories();
+    const testCategory = {
+      name: 'apple',
+      description: 'crunchy'
+    };
 
+    return categories.get()
+      .then(allCategories => {
+        return categories.update(allCategories.results[0]._id, testCategory)
+      })
+      .then(updatedCategory => {
+        Object.keys(testCategory).forEach(key => {
+          expect(updatedCategory[key]).toEqual(testCategory[key]);
+        });
+      })
+      .catch(console.log);
   });
 
-  // it('can delete() a category', () => {
-  // });
+  it('can delete() a category', () => {
+    const categories = new Categories();
+    const testCategory = {
+      name: 'tofu',
+      description: 'smelly'
+    };
+
+    return categories.create(testCategory)
+      .then(savedCategory => categories.delete(savedCategory._id))
+      .then(deletedCategory => {
+        Object.keys(testCategory).forEach(key => {
+          expect(deletedCategory[key]).toEqual(testCategory[key]);
+        });
+      })
+      .catch(console.log);
+  });
 
 });

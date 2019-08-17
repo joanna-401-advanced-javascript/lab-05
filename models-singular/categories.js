@@ -36,7 +36,7 @@ class Categories {
   }
 
   delete(_id) {
-    // Call the appropriate mongoose method to delete a record
+    return CategoryModel.findByIdAndDelete(_id);
   }
 
 }
