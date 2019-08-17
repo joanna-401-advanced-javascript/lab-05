@@ -14,7 +14,7 @@ mongoose.connect(MONGOOSE_URI, {useNewUrlParser: true} );
 // Do some work
 const categories = new Categories;
 
-const createdCategory = categories.create({
+categories.create({
   name: 'dandelion',
   description: 'floaty fur ball'
 })

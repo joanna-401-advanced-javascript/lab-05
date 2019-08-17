@@ -93,5 +93,4 @@ describe('Categories Model (Singular)', () => {
       })
       .catch(console.log);
   });
-
 });
