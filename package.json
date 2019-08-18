@@ -4,6 +4,7 @@
   "description": "",
   "main": "players-schema.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jest --verbose --coverage",
     "test-watch": "jest --watchAll --verbose",
     "startDB": "mkdir -p ./.db && mongod --dbpath ./.db",

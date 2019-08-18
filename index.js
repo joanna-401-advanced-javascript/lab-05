@@ -12,34 +12,41 @@ const MONGOOSE_URI = 'mongodb://localhost/lab-05';
 mongoose.connect(MONGOOSE_URI, {useNewUrlParser: true} );
 
 // Do some work
-const categories = new Categories;
+const doWork = async () => {
+  const categories = new Categories;
 
-categories.create({
-  name: 'dandelion',
-  description: 'floaty fur ball',
-})
-  .then(savedCategory => {
-    console.log('SAVED', savedCategory);
-    return categories.create({
-      name: 'seal',
-      description: 'sea puppy',
-    });
+  let printOut = await categories.create({
+    name: 'dandelion',
+    description: 'floaty fur ball',
   })
-  .then(savedCategory => {
-    console.log('SAVED AGAIN', savedCategory);
-    return categories.get();
-  })
-  .then(allCategories => {
-    console.log('ALL CATEGORIES', allCategories);
-    return categories.update(allCategories.results[0]._id, {
-      name: 'pizza',
-      description: 'happiness on a plate',
-    });
-  })
-  .then(updatedCategory => {
-    console.log('UPDATED', updatedCategory);
-  })
-  .catch(console.log);
+    .then(savedCategory => {
+      console.log('SAVED', savedCategory);
+      return categories.create({
+        name: 'seal',
+        description: 'sea puppy',
+      });
+    })
+    .then(savedCategory => {
+      console.log('SAVED AGAIN', savedCategory);
+      return categories.get();
+    })
+    .then(allCategories => {
+      console.log('ALL CATEGORIES', allCategories);
+      return categories.update(allCategories.results[0]._id, {
+        name: 'pizza',
+        description: 'happiness on a plate',
+      });
+    })
+    .then(updatedCategory => {
+      console.log('UPDATED', updatedCategory);
+    })
+    .catch(console.log);
 
-// Disconnect
-// mongoose.disconnect();
+  console.log(printOut);
+
+  // Disconnect
+  mongoose.disconnect();
+};
+
+doWork();
+
