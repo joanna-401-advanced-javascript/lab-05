@@ -21,10 +21,9 @@ class Model {
     } else {
       return this.schema.find({})
         .then(data => {
-          return {count: data.length, results: data}
+          return {count: data.length, results: data};
         });
     }
-    return Promise.reject(new Error('-- invalid ID --'));
   }
 
   /**

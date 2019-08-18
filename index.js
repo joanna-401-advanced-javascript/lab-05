@@ -16,13 +16,13 @@ const categories = new Categories;
 
 categories.create({
   name: 'dandelion',
-  description: 'floaty fur ball'
+  description: 'floaty fur ball',
 })
   .then(savedCategory => {
-    console.log('SAVED', savedCategory)
+    console.log('SAVED', savedCategory);
     return categories.create({
       name: 'seal',
-      description: 'sea puppy'
+      description: 'sea puppy',
     });
   })
   .then(savedCategory => {
@@ -33,7 +33,7 @@ categories.create({
     console.log('ALL CATEGORIES', allCategories);
     return categories.update(allCategories.results[0]._id, {
       name: 'pizza',
-      description: 'happiness on a plate'
+      description: 'happiness on a plate',
     });
   })
   .then(updatedCategory => {

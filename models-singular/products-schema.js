@@ -14,7 +14,7 @@ const products = mongoose.Schema({
   invisible: {
     required:true,
     type: Boolean,
-  }
+  },
 });
 
 module.exports = mongoose.model('products ', products);
