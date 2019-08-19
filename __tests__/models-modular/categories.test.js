@@ -1,4 +1,4 @@
-const Categories = require('../../models-modular/categories/categories');
+const categories = require('../../models-modular/categories/categories');
 
 const supergoose = require('../supergoose.js');
 
@@ -7,7 +7,6 @@ describe('Categories Model (Modular)', () => {
   // How will you handle both the happy path and edge cases in these tests?
 
   it('can create() a new category', () => {
-    let categories = new Categories();
     const testCategory = {
       name: 'day',
       description: 'bright',
@@ -22,7 +21,6 @@ describe('Categories Model (Modular)', () => {
   });
 
   it('can get() a category', () => {
-    const categories = new Categories();
     const testCategory = {
       name: 'banana',
       description: 'yellow',
@@ -39,7 +37,6 @@ describe('Categories Model (Modular)', () => {
   });
 
   it('can get() all categories', () => {
-    const categories = new Categories();
     const testCategory = {
       name: 'berries',
       description: 'sweet',
@@ -57,7 +54,6 @@ describe('Categories Model (Modular)', () => {
   });
 
   it('can update() a category', () => {
-    const categories = new Categories();
     const testCategory = {
       name: 'apple',
       description: 'crunchy',
@@ -76,7 +72,6 @@ describe('Categories Model (Modular)', () => {
   });
 
   it('can delete() a category', () => {
-    const categories = new Categories();
     const testCategory = {
       name: 'tofu',
       description: 'smelly',
