@@ -1,6 +1,6 @@
 'use strict';
 
-const products = require('../../models-singular/products');
+const Products = require('../../models-singular/products');
 
 const supergoose = require('../supergoose.js');
 
@@ -9,6 +9,7 @@ describe('Products Model (Singular)', () => {
   // How will you handle both the happy path and edge cases in these tests?
 
   it('can create() a new product', () => {
+    const products = new Products();
     const testProduct = {
       name: 'Ginger Beer',
       ranking: 50,
@@ -24,6 +25,7 @@ describe('Products Model (Singular)', () => {
   });
 
   it('can get() a product', () => {
+    const products = new Products();
     const testProduct = {
       name: 'Bravery',
       ranking: 100,
@@ -41,6 +43,7 @@ describe('Products Model (Singular)', () => {
   });
 
   it('can get() all product', () => {
+    const products = new Products();
     const testProduct = {
       name: 'Wind',
       ranking: -2,
@@ -59,6 +62,7 @@ describe('Products Model (Singular)', () => {
   });
 
   it('can update() a product', () => {
+    const products = new Products();
     const testProduct = {
       name: 'Gummy Bears',
       ranking: 22,
@@ -78,6 +82,7 @@ describe('Products Model (Singular)', () => {
   });
 
   it('can delete() a product', () => {
+    const products = new Products();
     const testProduct = {
       name: 'Scabs',
       ranking: -80,
