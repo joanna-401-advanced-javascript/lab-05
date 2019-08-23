@@ -12,10 +12,9 @@ class Products {
     } else {
       return ProductModel.find({})
         .then(data => {
-          return {count: data.length, results: data}
+          return {count: data.length, results: data};
         });
     }
-    return Promise.reject(new Error('-- invalid ID --'));
   }
 
   create(record) {

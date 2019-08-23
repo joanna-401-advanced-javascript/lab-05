@@ -12,7 +12,7 @@ describe('Categories Model (Singular)', () => {
     const categories = new Categories();
     const testCategory = {
       name: 'Food',
-      description: 'Delicious'
+      description: 'Delicious',
     };
 
     return categories.create(testCategory)
@@ -20,14 +20,14 @@ describe('Categories Model (Singular)', () => {
         Object.keys(testCategory).forEach(key => {
           expect(savedCategory[key]).toEqual(testCategory[key]);
         });
-      })
+      });
   });
 
   it('can get() a category', () => {
     const categories = new Categories();
     const testCategory = {
       name: 'banana',
-      description: 'yellow'
+      description: 'yellow',
     };
 
     return categories.create(testCategory)
@@ -44,7 +44,7 @@ describe('Categories Model (Singular)', () => {
     const categories = new Categories();
     const testCategory = {
       name: 'berries',
-      description: 'sweet'
+      description: 'sweet',
     };
 
     return categories.create(testCategory)
@@ -62,12 +62,12 @@ describe('Categories Model (Singular)', () => {
     const categories = new Categories();
     const testCategory = {
       name: 'apple',
-      description: 'crunchy'
+      description: 'crunchy',
     };
 
     return categories.get()
       .then(allCategories => {
-        return categories.update(allCategories.results[0]._id, testCategory)
+        return categories.update(allCategories.results[0]._id, testCategory);
       })
       .then(updatedCategory => {
         Object.keys(testCategory).forEach(key => {
@@ -81,7 +81,7 @@ describe('Categories Model (Singular)', () => {
     const categories = new Categories();
     const testCategory = {
       name: 'tofu',
-      description: 'smelly'
+      description: 'smelly',
     };
 
     return categories.create(testCategory)

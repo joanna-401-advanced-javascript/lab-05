@@ -21,7 +21,7 @@ describe('Products Model (Singular)', () => {
         Object.keys(testProduct).forEach(key => {
           expect(savedProduct[key]).toEqual(testProduct[key]);
         });
-      })
+      });
   });
 
   it('can get() a product', () => {
@@ -71,7 +71,7 @@ describe('Products Model (Singular)', () => {
 
     return products.get()
       .then(allProducts => {
-        return products.update(allProducts.results[0]._id, testProduct)
+        return products.update(allProducts.results[0]._id, testProduct);
       })
       .then(updatedProduct => {
         Object.keys(testProduct).forEach(key => {

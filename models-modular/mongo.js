@@ -2,7 +2,6 @@
 
 /** Class representing a generic mongo model. */
 class Model {
-
   /**
    * Model Constructor
    * @param schema {object} - mongo schema
@@ -17,7 +16,14 @@ class Model {
    * @returns {count:#,results:[{*}]} | {*}
    */
   get(_id) {
-
+    if(_id){
+      return this.schema.findOne({_id});
+    } else {
+      return this.schema.find({})
+        .then(data => {
+          return {count: data.length, results: data};
+        });
+    }
   }
 
   /**
@@ -26,7 +32,8 @@ class Model {
    * @returns {*}
    */
   create(record) {
-
+    const newRecord = new this.schema(record);
+    return newRecord.save();
   }
 
   /**
@@ -36,16 +43,16 @@ class Model {
    * @returns {*}
    */
   update(_id, record) {
-
+    return this.schema.findByIdAndUpdate(_id, record, {new: true});
   }
 
   /**
-   * Deletes a recod in the model
+   * Deletes a record in the model
    * @param _id {string} Mongo Record ID
    * @returns {*}
    */
   delete(_id) {
-
+    return this.schema.findByIdAndDelete(_id);
   }
 
 }
